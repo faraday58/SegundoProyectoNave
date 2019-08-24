@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
-namespace JuegoNave_2020_I_G3
-{
+namespace SegundoProyectoNave
+{ 
     class Personaje
     {
 
@@ -14,8 +14,8 @@ namespace JuegoNave_2020_I_G3
         #endregion
 
         #region Propiedades
-        public short PosX { get => posX; set => posX = value; }
-        public short PosY { get => posY; set => posY = value; }
+        public virtual short PosX { get => posX; set => posX = value; }
+        public virtual short PosY { get => posY; set => posY = value; }
         public short Ancho { get => ancho; set => ancho = value; }
         public short Alto { get => alto; set => alto = value; }
         public PictureBox SptPersonaje { get => sptPersonaje; set => sptPersonaje = value; }
@@ -31,7 +31,7 @@ namespace JuegoNave_2020_I_G3
         #endregion
 
         #region Métodos
-        public bool Interseccion(Personaje personaje)
+        public bool Intersecar(Personaje personaje)
         {
             short difx = Convert.ToInt16(Math.Abs(PosX - personaje.PosX));
             short dify = Convert.ToInt16(Math.Abs(PosY - personaje.PosY));
@@ -52,7 +52,7 @@ namespace JuegoNave_2020_I_G3
         /// <param name="xdir">Establece la cantidad de pixeles a desplazar en eje X</param>
         /// <param name="ydir">Establece la cantidad de pixeles a desplazar en eje Y</param>
 
-        public virtual void Movimiento(short xdir, short ydir)
+        public virtual void Mover(short xdir, short ydir)
         {
             PosX += xdir;
             PosY += ydir;

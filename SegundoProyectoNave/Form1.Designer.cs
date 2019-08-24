@@ -1,4 +1,4 @@
-﻿namespace JuegoNave_2020_I_G3
+﻿namespace SegundoProyectoNave
 {
     partial class Form1
     {
@@ -37,6 +37,7 @@
             this.ClientSize = new System.Drawing.Size(645, 259);
             this.Name = "Form1";
             this.Text = "Form1";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
             this.ResumeLayout(false);
 
         }

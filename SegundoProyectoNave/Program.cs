@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace JuegoNave_2020_I_G3
+namespace SegundoProyectoNave
 {
     static class Program
     {
