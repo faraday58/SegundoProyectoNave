@@ -8,6 +8,8 @@ namespace SegundoProyectoNave
     {
         private Nave miNave;
         private short despNave;
+        private short despEnemigo;
+        private Enemigo miEnemigo;
 
         public Form1()
         {
@@ -15,14 +17,17 @@ namespace SegundoProyectoNave
             this.Width = ConstanteJuego.anchoVentana;
             this.Height = ConstanteJuego.altoVentana;
 
-            miNave = new Nave((short)(this.Width/2),(short)(this.Height- (2*48)));
-            AgregarPersonaje();
+            miNave = new Nave((short)(this.Width/2),(short)(this.Height- (2*48)));         
             despNave = 20;
+            miEnemigo = new Enemigo();
+            AgregarPersonaje();
+            temporizadorLoop.Start();
         }
 
         public void AgregarPersonaje()
         {
             this.Controls.Add(miNave.SptPersonaje);
+            this.Controls.Add(miEnemigo.SptPersonaje);
         }
 
         private void Form1_KeyDown(object sender, KeyEventArgs e)
@@ -44,6 +49,14 @@ namespace SegundoProyectoNave
 
 
             }
+        }
+
+        private void temporizadorLoop_Tick(object sender, EventArgs e)
+        {
+
+            miEnemigo.Mover(despNave, 0);
+            
+           
         }
     }
 }

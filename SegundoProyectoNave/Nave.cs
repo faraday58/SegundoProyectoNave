@@ -5,7 +5,6 @@ namespace SegundoProyectoNave
 {
     class Nave : Personaje
     {
-
         public override short PosX
         {
             get => base.PosX;
@@ -15,20 +14,37 @@ namespace SegundoProyectoNave
                 {
                     PosX = 0;
                 }
-                else if(  PosX
-                    >  ConstanteJuego.anchoVentana -20 )
+                else if(  value
+                    >  ConstanteJuego.anchoVentana - (2*this.Ancho) )
                 {
-                    PosX = ConstanteJuego.anchoVentana-20;
+                    PosX = (short)(ConstanteJuego.anchoVentana-2*this.Ancho);
                 }
                 else
                 {
                     base.PosX= value;
                 }
-
-                
             }
         }
 
+        public override short PosY
+        {
+            get => base.PosY;
+            set
+            {
+                if (value<0)
+                {
+                    PosY = 0;
+                }
+                else if (value>ConstanteJuego.altoVentana-2*this.Alto)
+                {
+                    PosY = (short)(ConstanteJuego.altoVentana - 2 * this.Alto);
+                }
+                else
+                {
+                    base.PosY = value;
+                }
+            }
+        }
 
         /// <summary>
         /// Constructor de la Nave que define la posición inicial

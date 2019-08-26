@@ -73,6 +73,26 @@ namespace SegundoProyectoNave.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap enemy_small {
+            get {
+                object obj = ResourceManager.GetObject("enemy-small", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap laser_boltsm {
+            get {
+                object obj = ResourceManager.GetObject("laser-boltsm", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap shipm {
             get {
                 object obj = ResourceManager.GetObject("shipm", resourceCulture);

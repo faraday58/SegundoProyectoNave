@@ -28,7 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            this.temporizadorLoop = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
+            // 
+            // temporizadorLoop
+            // 
+            this.temporizadorLoop.Tick += new System.EventHandler(this.temporizadorLoop_Tick);
             // 
             // Form1
             // 
@@ -43,6 +49,8 @@
         }
 
         #endregion
+
+        private System.Windows.Forms.Timer temporizadorLoop;
     }
 }
 
