@@ -55,8 +55,18 @@ namespace SegundoProyectoNave
         {
 
             miEnemigo.Mover(despNave, 0);
-            
+            miNave.Balaser.Mover(0,(short)( 2 * despNave));
            
+        }
+
+        private void Form1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if( e.KeyChar == (char)Keys.Space )
+            {
+                miNave.Disparar();
+                this.Controls.Add(miNave.Balaser.SptPersonaje);
+
+            }
         }
     }
 }

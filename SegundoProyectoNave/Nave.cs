@@ -5,6 +5,10 @@ namespace SegundoProyectoNave
 {
     class Nave : Personaje
     {
+
+        private Bala balaser;
+
+        #region Propiedades
         public override short PosX
         {
             get => base.PosX;
@@ -45,6 +49,10 @@ namespace SegundoProyectoNave
                 }
             }
         }
+     
+
+        internal Bala Balaser { get => balaser; set => balaser = value; }
+        #endregion
 
         /// <summary>
         /// Constructor de la Nave que define la posición inicial
@@ -54,6 +62,7 @@ namespace SegundoProyectoNave
 
         public Nave(short x, short y)
         {
+
             PosX = x;
             PosY = y;
             SptPersonaje.Image = global::SegundoProyectoNave.Properties.Resources.shipm;
@@ -69,6 +78,10 @@ namespace SegundoProyectoNave
             SptPersonaje.Location = new Point(PosX, PosY);
         }
 
+        public void Disparar()
+        {
+            Balaser = new Bala(PosX, PosY, Ancho, Alto);
+        }
 
 
     }

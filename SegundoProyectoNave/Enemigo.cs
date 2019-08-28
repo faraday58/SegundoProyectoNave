@@ -6,8 +6,10 @@ namespace SegundoProyectoNave
 {
     class Enemigo:Personaje
     {
+        bool cambiaDirec;
         public Enemigo()
         {
+            
             PosX = ConstanteJuego.anchoVentana/2;
             PosY = ConstanteJuego.altoVentana/3;
             SptPersonaje.Image = global::SegundoProyectoNave.Properties.Resources.enemy_small;
@@ -33,6 +35,18 @@ namespace SegundoProyectoNave
         }
         public override void Mover(short xdir, short ydir)
         {
+            if (PosX >= ConstanteJuego.anchoVentana -2*(Properties.Resources.enemy_small.Width))
+            {
+                cambiaDirec = true;
+            }
+            if (PosX ==0)
+            {
+                cambiaDirec = false;
+            }
+            if (cambiaDirec == true)
+            {
+                xdir = (short)-xdir;
+            }
             base.Mover(xdir, 0);
             SptPersonaje.Location = new Point(PosX, PosY);
         }
