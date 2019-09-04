@@ -24,7 +24,7 @@ namespace SegundoProyectoNave
         public override void Mover(short xdir, short ydir)
         {
             xdir = 0;
-            base.Mover(xdir, ydir);
+            base.Mover(xdir,(short) -ydir);
             SptPersonaje.Location = new Point(PosX,PosY);
 
         }

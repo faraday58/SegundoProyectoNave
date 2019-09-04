@@ -11,6 +11,9 @@ namespace SegundoProyectoNave
         private short despEnemigo;
         private Enemigo miEnemigo;
 
+
+        private bool puedeDisparar;
+
         public Form1()
         {
             InitializeComponent();
@@ -22,6 +25,7 @@ namespace SegundoProyectoNave
             miEnemigo = new Enemigo();
             AgregarPersonaje();
             temporizadorLoop.Start();
+            puedeDisparar = true;
         }
 
         public void AgregarPersonaje()
@@ -46,6 +50,13 @@ namespace SegundoProyectoNave
                 case Keys.Left:
                     miNave.Mover((short)-despNave, 0);
                     break;
+                case Keys.Space:
+                    if (puedeDisparar)
+                    {
+                        miNave.Disparar();
+                        this.Controls.Add(miNave.Balaser.SptPersonaje);
+                    }
+                    break;
 
 
             }
@@ -55,18 +66,21 @@ namespace SegundoProyectoNave
         {
 
             miEnemigo.Mover(despNave, 0);
-            miNave.Balaser.Mover(0,(short)( 2 * despNave));
+            if( miNave.Balaser != null)
+            {
+                puedeDisparar = false;
+                miNave.Balaser.Mover(0, (short)(2 * despNave));
+                if( miNave.Balaser.PosY < 0 )
+               {
+                   Controls.Remove( miNave.Balaser.SptPersonaje);
+                    miNave.Balaser = null;
+                    puedeDisparar = true;
+               }
+            }
+            
            
         }
 
-        private void Form1_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if( e.KeyChar == (char)Keys.Space )
-            {
-                miNave.Disparar();
-                this.Controls.Add(miNave.Balaser.SptPersonaje);
-
-            }
-        }
+       
     }
 }
