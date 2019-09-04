@@ -13,9 +13,12 @@ namespace SegundoProyectoNave
 
 
         private bool puedeDisparar;
+        private Form FormPadre;
 
-        public Form1()
+        public Form1(Form FormPadre)
         {
+            this.FormPadre = FormPadre;
+
             InitializeComponent();
             this.Width = ConstanteJuego.anchoVentana;
             this.Height = ConstanteJuego.altoVentana;
@@ -81,6 +84,9 @@ namespace SegundoProyectoNave
            
         }
 
-       
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            FormPadre.Show();
+        }
     }
 }
