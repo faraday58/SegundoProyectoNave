@@ -31,9 +31,10 @@ namespace SegundoProyectoNave
             string passUsuario = txtbPassword.Text;
             for (int i = 0;i< nomusuarios.Length; i++)
             {
+                
                 if (nomUsuario == nomusuarios[i] && passUsuario == contraseñas[i])
                 {
-                    ErrorAcceso.Clear();
+                    
                     if (formJuego == null)
                     {
                         formJuego = new Form1(this);
@@ -42,6 +43,7 @@ namespace SegundoProyectoNave
                         formJuego = null;
 
                     }
+                    ErrorAcceso.Clear();
 
                 }
                 else
