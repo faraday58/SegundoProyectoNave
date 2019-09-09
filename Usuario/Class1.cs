@@ -11,6 +11,7 @@ namespace Usuarios
         private string nombre;
         private string correo;
         private string pregunta;
+        private string respuesta;
 
         #endregion Atributos
 
@@ -35,6 +36,7 @@ namespace Usuarios
         public string Nombre { get => nombre; set => nombre = value; }
         public string Correo { get => correo; set => correo = value; }
         public string Pregunta { get => pregunta; set => pregunta = value; }
+        public string Respuesta { get => respuesta; set => respuesta = value; }
         #endregion Propiedades
 
         #region Metodos
