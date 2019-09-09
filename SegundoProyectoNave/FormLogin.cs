@@ -34,7 +34,7 @@ namespace SegundoProyectoNave
                 
                 if (nomUsuario == nomusuarios[i] && passUsuario == contraseñas[i])
                 {
-                    
+                   
                     if (formJuego == null)
                     {
                         formJuego = new Form1(this);
@@ -44,7 +44,7 @@ namespace SegundoProyectoNave
 
                     }
                     ErrorAcceso.Clear();
-
+                    break;
                 }
                 else
                 {
