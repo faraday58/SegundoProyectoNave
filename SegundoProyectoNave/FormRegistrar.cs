@@ -25,7 +25,7 @@ namespace SegundoProyectoNave
             usuario.Pregunta = cmbPregunta.Items[cmbPregunta.SelectedIndex].ToString();
             usuario.Respuesta = txtbRespuesta.Text;
 
-
+            usuarios[contUs] = usuario;
         }
     }
 }
