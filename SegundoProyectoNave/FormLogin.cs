@@ -8,6 +8,7 @@ namespace SegundoProyectoNave
     public partial class FormLogin : Form
     {
         private Form1 formJuego;
+        private FormRegistrar formRegistrar;
         string[] nomusuarios;
         string[] contraseñas;
         private ErrorProvider ErrorAcceso;
@@ -22,24 +23,28 @@ namespace SegundoProyectoNave
 
         private void btnEntrar_Click(object sender, EventArgs e)
         {
+
+            
             string nomUsuario = txtbLogin.Text;
             string passUsuario = txtbPassword.Text;
             for (int i = 0;i< nomusuarios.Length; i++)
             {
-                
-                if (nomUsuario == nomusuarios[i] && passUsuario == contraseñas[i])
+                if (formRegistrar != null)
                 {
-                   
-                    if (formJuego == null)
+                    if (nomUsuario == formRegistrar.Usuarios[i].NickName && passUsuario == formRegistrar.Usuarios[i].Password)
                     {
-                        formJuego = new Form1(this);
-                        formJuego.Show();
-                        this.Hide();
-                        formJuego = null;
 
+                        if (formJuego == null)
+                        {
+                            formJuego = new Form1(this);
+                            formJuego.Show();
+                            this.Hide();
+                            formJuego = null;
+
+                        }
+                        ErrorAcceso.Clear();
+                        break;
                     }
-                    ErrorAcceso.Clear();
-                    break;
                 }
                 else
                 {
@@ -51,5 +56,15 @@ namespace SegundoProyectoNave
             
         }
 
+        private void btnRegistrar_Click(object sender, EventArgs e)
+        {
+            if(formRegistrar == null)
+            {
+                formRegistrar = new FormRegistrar(this);
+                formRegistrar.Show();
+                this.Hide();
+             
+            }
+        }
     }
 }
