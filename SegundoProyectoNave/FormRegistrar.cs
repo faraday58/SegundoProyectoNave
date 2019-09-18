@@ -100,6 +100,7 @@ namespace SegundoProyectoNave
                 
                 if (mayus == false ||minus == false ||num==false)
                 {
+                    i = 5;
                     string error = "Debe tener al menos una mayus, una minus y un numero";
                     throw new ApplicationException(error);
                 }
@@ -138,6 +139,9 @@ namespace SegundoProyectoNave
                         errorProvider.SetError(txtbRespuesta, error.Message);
                         break;
                     case 4:
+                        errorProvider.SetError(txtbPassword, error.Message);
+                        break;
+                    case 5:
                         errorProvider.SetError(txtbPassword, error.Message);
                         break;
 
