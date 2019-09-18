@@ -13,6 +13,12 @@ namespace SegundoProyectoNave
         
 
         private byte contUs;
+
+        /// <summary>
+        /// Constructor para especificar el Formulario que controla a este 
+        /// </summary>
+        /// <param name="FormPadre">Es el formulario que instancia al presente constructor</param>
+
         public FormRegistrar(Form FormPadre)
         {
             this.FormPadre = FormPadre;
