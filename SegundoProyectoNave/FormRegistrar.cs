@@ -9,7 +9,7 @@ namespace SegundoProyectoNave
     {
         private Usuario[] usuarios;
         private Form FormPadre;
-
+        private ErrorProvider errorProvider;
         
 
         private byte contUs;
@@ -24,6 +24,8 @@ namespace SegundoProyectoNave
             this.FormPadre = FormPadre;
             InitializeComponent();
             usuarios = new Usuario[3];
+            //Instanciando error Provider
+            errorProvider = new ErrorProvider();
         }
 
         public byte ContUs
@@ -46,13 +48,113 @@ namespace SegundoProyectoNave
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-            Usuario usuario = new Usuario();
-            usuario.NickName = txtNickName.Text;
-            usuario.Password = txtbPassword.Text;
-            usuario.Nombre = txtbNombre.Text;
-            usuario.Pregunta = cmbPregunta.Items[cmbPregunta.SelectedIndex].ToString();
-            usuario.Respuesta = txtbRespuesta.Text;
-            usuarios[ContUs++] = usuario;
+            byte i = 0;
+            try            
+           {
+                Usuario usuario = new Usuario();
+                usuario.NickName = txtNickName.Text; 
+                
+                if(usuario.NickName =="")
+                {
+                    i = 1;
+                    string error = "No puedes dejar el campo vacío";
+                    throw new ApplicationException(error);
+                }
+                usuario.Password = txtbPassword.Text;
+                if(txtbPassword.Text =="")
+                {
+                    txtbPassword.Text = usuario.Password;
+                }
+                else if(usuario.Password.Contains("123"))
+                {
+                    i = 4;
+                    //string error = "Debe tener una mayuscula, una minuscula y un numero";
+                    string error = "No debe tener números consecutivos";
+                    throw new ApplicationException(error);
+                }
+                bool mayus=false, minus=false,num= false;
+                for (int j = 0; j < usuario.Password.Length; j++)
+                {
+                    if (usuario.Password[j]>64&&usuario.Password[j]<91)
+                    {
+                        mayus = true;
+                        break;
+                    }
+                }
+                for (int j = 0; j < usuario.Password.Length; j++)
+                {
+                    if(usuario.Password[j] > 96 && usuario.Password[j] < 122)
+                    {
+                        minus = true;
+                        break;
+                    }
+                }
+                for (int j = 0; j < usuario.Password.Length; j++)
+                {
+                    if (usuario.Password[j] > 47 && usuario.Password[j] < 58)
+                    {
+                        num = true;
+                        break;
+                    }
+                }            
+                
+                if (mayus == false ||minus == false ||num==false)
+                {
+                    string error = "Debe tener al menos una mayus, una minus y un numero";
+                    throw new ApplicationException(error);
+                }
+                
+
+
+                usuario.Nombre = txtbNombre.Text;
+                if (usuario.Nombre == "")
+                {
+                    i = 2;
+                    string error = "No puedes dejar el campo vacío";
+                    throw new ApplicationException(error);
+                }
+                usuario.Pregunta = cmbPregunta.Items[cmbPregunta.SelectedIndex].ToString();
+                usuario.Respuesta = txtbRespuesta.Text;
+                if (usuario.Respuesta == "")
+                {
+                    i = 3;
+                    string error = "No puedes dejar el campo vacío";
+                    throw new ApplicationException(error);
+                }
+                usuarios[ContUs++] = usuario;
+            }
+           
+            catch(ApplicationException error )
+            {
+                switch (i)
+                {
+                    case 1:
+                        errorProvider.SetError(txtNickName, error.Message);
+                        break;
+                    case 2:
+                        errorProvider.SetError(txtbNombre, error.Message);
+                        break;
+                    case 3:
+                        errorProvider.SetError(txtbRespuesta, error.Message);
+                        break;
+                    case 4:
+                        errorProvider.SetError(txtbPassword, error.Message);
+                        break;
+
+                }
+       
+                
+            }
+            catch(ArgumentOutOfRangeException )
+            {
+                errorProvider.SetError(cmbPregunta, "Debes seleccionar una pregunta");
+            }
+            catch
+            {
+                MessageBox.Show("Hubo un error");
+
+            }
+            
 
         }
 
